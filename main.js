@@ -30,7 +30,7 @@ function Cookie(name, total_bake_time){
   }
 }
 
-var chocolateChip = new Cookie ("chocolate chip", 5);
+var chocolateChip = new Cookie ("chocolate chip",  4);
 
 var Oven = {
   bakeOneMinute: function() {
@@ -39,10 +39,10 @@ var Oven = {
   }
 }
 
-// $(document).ready(function() {
-//   $('new_batch').on('submit', function(event){
-//     event.preventDefault
+$(document).ready(function() {
+  $('new_batch').on('submit', function(event){
+    event.preventDefault
 
-//   })
-// });
+  })
+});
  
