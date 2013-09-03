@@ -26,23 +26,52 @@ function Cookie(name, total_bake_time){
   }
 
   this.info = function(){
-    console.log("I am a " + name + " with a bake time of " + total_bake_time + ". current bake time is " + current_bake_time);
+    console.log( name + ":  " + current_bake_time + " of " + total_bake_time + " min. Status: " + this.getStatus());
   }
 }
 
-var chocolateChip = new Cookie ("chocolate chip",  4);
 
 var Oven = {
+
+  init: function() {
+    this.cookies = [];
+  },
+
   bakeOneMinute: function() {
     // call .bake on each cookie in oven
+    for (var i = 0; i < this.cookies.length; i++)
+    {
+       this.cookies[i].bake();
+       this.cookies[i].info();
+    }
+  },
+
+  addTrayOfCookies: function(cookie) {
+    this.cookies.push(cookie);
 
   }
 }
 
-$(document).ready(function() {
-  $('new_batch').on('submit', function(event){
-    event.preventDefault
 
-  })
-});
- 
+var chocolateChip = new Cookie ("chocolate chip",  6);
+var pasteball = new Cookie ("ball of paste",  4);
+var snickerdoodle = new Cookie ("snickerdoodle",  5);
+
+Oven.init();
+
+Oven.addTrayOfCookies(chocolateChip);
+Oven.addTrayOfCookies(pasteball);
+Oven.addTrayOfCookies(snickerdoodle);
+
+for(var i = 0; i < 10; i++)
+{
+  Oven.bakeOneMinute();
+}
+
+
+// $(document).ready(function() {
+//   $('new_batch').on('submit', function(event){
+//     event.preventDefault
+
+//   })
+// });
