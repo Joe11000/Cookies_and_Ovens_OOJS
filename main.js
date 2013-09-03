@@ -36,14 +36,12 @@ var Table = {
   cookies: [],
 
   addTrayToOven: function(prep_index) {
-    // How to push/pop a specific item? shift will take the 1st
     var cookie = this.cookies[prep_index];
     this.cookies.splice(prep_index, 1)
-    // console.log("Table.addTrayToOven");
+
     console.log(cookie);
     Oven.insertCookies();
 
-    // remove the first listing
     prep_index++;
     var list_item = "#prep_batches li:nth-child(" + prep_index + ")";
     $(list_item).remove();
@@ -63,7 +61,7 @@ var Oven = {
   cookies: [],
 
   bakeOneMinute: function() {
-    // call .bake on each cookie in oven
+
     for (var i = 0; i < this.cookies.length; i++)
     {
        this.cookies[i].bake();
@@ -89,7 +87,7 @@ $(document).ready(function() {
 
     Table.prepareCookies(newCookie);
 
-    // Clear
+    // Clear form
     cookieInput[0].value = "";
     cookieInput[1].value = 0;
 
