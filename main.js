@@ -53,25 +53,9 @@ var Oven = {
 }
 
 
-var chocolateChip = new Cookie ("chocolate chip",  6);
-var pasteball = new Cookie ("ball of paste",  4);
-var snickerdoodle = new Cookie ("snickerdoodle",  5);
-
-Oven.init();
-
-Oven.addTrayOfCookies(chocolateChip);
-Oven.addTrayOfCookies(pasteball);
-Oven.addTrayOfCookies(snickerdoodle);
-
-for(var i = 0; i < 10; i++)
-{
-  Oven.bakeOneMinute();
-}
-
-
-// $(document).ready(function() {
-//   $('new_batch').on('submit', function(event){
-//     event.preventDefault
-
-//   })
-// });
+$(document).ready(function() {
+  $('new_batch').on('submit', function(event){
+    event.preventDefault
+    console.log()
+  })
+});
