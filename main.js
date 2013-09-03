@@ -1,3 +1,5 @@
+OVENSIZE = 3;
+
 function Cookie(name, total_bake_time){
   this.name = name;
   this.total_bake_time;
@@ -30,38 +32,39 @@ function Cookie(name, total_bake_time){
   }
 }
 
+var Table = {
+  cookies: [],
 
-var Oven = {
+  addTrayToOven: function() {
 
-  init: function() {
-    this.cookies = [];
   },
 
-  bakeOneMinute: function() {
-    // call .bake on each cookie in oven
-    for (var i = 0; i < this.cookies.length; i++)
-    {
-       this.cookies[i].bake();
-       this.cookies[i].info();
-    }
-  },
-
-  addTrayOfCookies: function(cookie) {
+  prepareCookies: function(cookie) {
     this.cookies.push(cookie);
+    console.log(this.cookies);
+    // jquery cookie name and a button to put
+    // cookies on table into oven
+    var list_item = "<li>" + cookie.name + "<button class='putinoven'>Add to oven!</button></li>"
+    $("#prep_batches").append(list_item);
+
 
   }
 }
 
-Oven.init();
 
 $(document).ready(function() {
   $('#new_batch').on('submit', function(event){
     event.preventDefault();
-    var cookieName = $('#new_batch > input')[0].value;
-    var cookieTime = $('#new_batch > input')[1].value;
+    var cookieInput = $('#new_batch > input');
+    var cookieName = cookieInput[0].value;
+    var cookieTime = cookieInput[1].value;
     var newCookie = new Cookie (cookieName, cookieTime);
-    Oven.addTrayOfCookies(newCookie);
-    Oven.bakeOneMinute();
 
-  })
+    Table.prepareCookies(newCookie);
+
+    // Clear
+    cookieInput[0].value = "";
+    cookieInput[1].value = 0;
+
+  });
 });

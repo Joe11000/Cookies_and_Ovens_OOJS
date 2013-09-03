@@ -45,9 +45,21 @@ table#oven td.just_right {
 }
 
 table#oven td.crispy {
+  background-color: brown;
+  color: black;
+}
+
+table#oven td.you_done_fucked_up {
   background-color: black;
   color: white;
 }
+
+table#oven td.kitchen_fire {
+  background-color: black;
+  color: red;
+  font-style: bold;
+}
+
 
 table#oven span.status {
   margin-left: 5px;
