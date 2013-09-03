@@ -18,7 +18,7 @@ function Cookie(name, total_bake_time){
     else if(current_bake_time === total_bake_time)
       return "just_right";
     else if(current_bake_time <= total_bake_time + 3)
-      return "crispy †";
+      return "crispy";
     else if(current_bake_time <= total_bake_time + 5)
       return "you done fucked up";
     else
@@ -26,11 +26,23 @@ function Cookie(name, total_bake_time){
   }
 
   this.info = function(){
-    alert("I am a " + name + " with a bake time of " + total_bake_time + ". current bake time is " + current_bake_time)
+    console.log("I am a " + name + " with a bake time of " + total_bake_time + ". current bake time is " + current_bake_time);
+  }
+}
+
+var chocolateChip = new Cookie ("chocolate chip", 5);
+
+var Oven = {
+  bakeOneMinute: function() {
+    // call .bake on each cookie in oven
+
   }
 }
 
 // $(document).ready(function() {
-//   $('new_batch').on('')
+//   $('new_batch').on('submit', function(event){
+//     event.preventDefault
+
+//   })
 // });
  
