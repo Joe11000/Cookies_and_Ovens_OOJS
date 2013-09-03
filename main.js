@@ -52,10 +52,16 @@ var Oven = {
   }
 }
 
+Oven.init();
 
 $(document).ready(function() {
-  $('new_batch').on('submit', function(event){
-    event.preventDefault
-    console.log()
+  $('#new_batch').on('submit', function(event){
+    event.preventDefault();
+    var cookieName = $('#new_batch > input')[0].value;
+    var cookieTime = $('#new_batch > input')[1].value;
+    var newCookie = new Cookie (cookieName, cookieTime);
+    Oven.addTrayOfCookies(newCookie);
+    Oven.bakeOneMinute();
+
   })
 });
