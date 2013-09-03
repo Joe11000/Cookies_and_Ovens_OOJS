@@ -35,24 +35,51 @@ function Cookie(name, total_bake_time){
 var Table = {
   cookies: [],
 
-  addTrayToOven: function() {
+  addTrayToOven: function(prep_index) {
+    // How to push/pop a specific item? shift will take the 1st
+    var cookie = this.cookies[prep_index];
+    this.cookies.splice(prep_index, 1)
+    // console.log("Table.addTrayToOven");
+    console.log(cookie);
+    Oven.insertCookies();
+
+    // remove the first listing
+    prep_index++;
+    var list_item = "#prep_batches li:nth-child(" + prep_index + ")";
+    $(list_item).remove();
 
   },
 
   prepareCookies: function(cookie) {
     this.cookies.push(cookie);
     console.log(this.cookies);
-    // jquery cookie name and a button to put
-    // cookies on table into oven
     var list_item = "<li>" + cookie.name + "<button class='putinoven'>Add to oven!</button></li>"
     $("#prep_batches").append(list_item);
+  }
+}
 
 
+var Oven = {
+  cookies: [],
+
+  bakeOneMinute: function() {
+    // call .bake on each cookie in oven
+    for (var i = 0; i < this.cookies.length; i++)
+    {
+       this.cookies[i].bake();
+       this.cookies[i].info();
+    }
+  },
+
+  insertCookies: function(cookie) {
+    this.cookies.push(cookie);
   }
 }
 
 
 $(document).ready(function() {
+
+  // clicking on "make batch"
   $('#new_batch').on('submit', function(event){
     event.preventDefault();
     var cookieInput = $('#new_batch > input');
@@ -67,4 +94,14 @@ $(document).ready(function() {
     cookieInput[1].value = 0;
 
   });
+
+  // clicking on "add to oven"
+  $('body').on('click', '.putinoven', function(event){
+     event.preventDefault();
+     var prep_index = $(this).parent().index();
+
+     Table.addTrayToOven(prep_index);
+  })
+
+
 });
